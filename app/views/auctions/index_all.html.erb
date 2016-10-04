@@ -1,0 +1,13 @@
+<h1>All Auctions and their bids</h1>
+<% @auctions.each do |auction| %>
+  <div>
+  <%= link_to auction.title, auction_path(auction)%>
+  </div>
+  <div>
+    <% @auction.bids.each do |bid| %>
+    <%= bid.user.full_name %>
+    <%= bid.amount %>
+    <hr>
+    <% end %>
+  </div>
+<% end %>

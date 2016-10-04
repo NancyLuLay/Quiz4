@@ -1,0 +1,31 @@
+<%= @auction.user.full_name %>:
+<h1><%= @auction.title%></h1>
+<p>
+  <%= @auction.description%>
+</p>
+<%= @auction.end_date%>
+<%= @auction.reserve_price%>
+
+<hr>
+<h1>Bids</h1>
+<!-- Creating a new bid -->
+<% if can? :bid, @auction %>
+  <%= form_for [@auction, @bid] do |f| %>
+    <%= f.label :amount  %>
+    <%= f.text_field :amount %>
+    <%= f.submit %>
+  <% end %>
+<% else %>
+You cannot bid on your own auction
+<% end  %>
+
+<hr>
+<!-- Bids show -->
+<h2>All Bids</h2>
+<div>
+<% @auction.bids.each do |bid| %>
+<%= bid.user.full_name %>
+<%= bid.amount %>
+<hr>
+<% end %>
+</div>

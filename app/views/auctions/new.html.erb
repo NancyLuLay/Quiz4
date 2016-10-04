@@ -1,0 +1,19 @@
+<h1>New Auction</h1>
+<div class="form-group">
+<%= simple_form_for @auction do |f| %>
+  <%= f.input :title %>
+  <%= f.input :description %>
+  <%= f.text_field :end_date, id:"date-entry" %>
+  <%= f.input :reserve_price %>
+  <%= f.submit class: "btn btn-primary" %>
+<% end %>
+</div>
+
+<script>
+  $(function(){
+    $('#date-entry').daterangepicker({
+    singleDatePicker: true,
+    showDropdowns: true
+    })
+  })
+</script>
